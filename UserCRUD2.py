@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-list = {} #dict 선언
+info = [] #dict 선언
 mem = [] #list 선언
+
+def printMem(dic):
+    print(dic['num'],dic['name'],dic['phone'])
+    
 while(True):
     inputa = input("회원정보 추가(c), 리스트보기(r), 수정(u), 삭제(d), 검색(s), 종료(x)")
     
@@ -13,30 +11,30 @@ while(True):
             insert = input("회원번호,이름,전화:")
             mem = insert.split(',')
             num,name,phone = mem
-            list = {'num':num,'name':name,'phone':phone}
+            info.append({'num':int(num),'name':name,'phone':phone})
                         
     elif(inputa=='r'):
-        for k,v in list.items():
-            print(k,v)
+        for m in info:
+            print(m)
     
     elif(inputa=='u'):
         newPhone = int(input("새 전화번호:"))
-        for m in list.items():
-            if(m[0]==num):
-                m[2] = newPhone
+        for m in info:
+            if(num==m['num']):
+                m['phone'] = newPhone
                 break
                         
     elif(inputa=='d'):
         delNum = input("삭제할 회원번호:")
-        for m in list.items():
-            if(delNum==m.num):
-                list.remove(m)
+        for m in info:
+            if(delNum==m['num']):
+                info.remove(m)
                 break
     
     elif(inputa=='s'):
         searchNum = int(input("검색할 회원번호:"))
-        for m in list.items():
-            if(searchNum==m.num):
+        for m in info:
+            if(searchNum==m['num']):
                 num = searchNum
                 print(m)
                 break
@@ -45,4 +43,3 @@ while(True):
         break
         
 print('프로그램종료...')
-
