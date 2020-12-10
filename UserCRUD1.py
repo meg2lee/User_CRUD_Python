@@ -49,7 +49,7 @@ while(True):
                 break
                         
     elif(inputa=='d'):
-        delNum = input("삭제할 회원번호:")
+        delNum = int(input("삭제할 회원번호:"))
         for m in list:
             if(delNum==m.num):
                 list.remove(m)
